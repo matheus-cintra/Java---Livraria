@@ -1,0 +1,6 @@
+v0.1
+- Primeiros conceitos do programa, com algumas telas e conexão com o banco feita.
+
+v0.2
+- Alterado o formLivro e adicionado botões para novo e salvar.
+- Criado o formAutor para adicionar autores.
