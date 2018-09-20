@@ -44,17 +44,20 @@ public class FormLivro extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jtxtFieldIsbn = new javax.swing.JTextField();
         jtxtFieldTitulo = new javax.swing.JTextField();
-        jtxtFieldEditora = new javax.swing.JTextField();
+        jtxtFieldIsbn = new javax.swing.JTextField();
+        jComboBoxEditora = new javax.swing.JComboBox();
         jtxtFieldPreco = new javax.swing.JTextField();
-        jtxtFieldBusca = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jbtnBuscar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableLivros = new javax.swing.JTable();
+        jtxtAutor = new javax.swing.JTextField();
+        jButtonNovo = new javax.swing.JButton();
+        jButtonSalvar = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableSalvo = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(0, 0));
         getContentPane().setLayout(null);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -63,14 +66,14 @@ public class FormLivro extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Seção de Livros");
+        jLabel1.setText("Cadastro de Livros");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(200, 20, 160, 20);
+        jLabel1.setBounds(190, 20, 180, 20);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("ISBN");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(290, 70, 75, 30);
+        jLabel2.setBounds(290, 140, 75, 30);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Título");
@@ -80,38 +83,58 @@ public class FormLivro extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Editora");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(30, 120, 75, 30);
+        jLabel4.setBounds(30, 140, 75, 30);
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Preço");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(290, 120, 75, 30);
-        jPanel1.add(jtxtFieldIsbn);
-        jtxtFieldIsbn.setBounds(370, 70, 150, 30);
+        jLabel5.setBounds(290, 210, 75, 30);
+
+        jtxtFieldTitulo.setEnabled(false);
         jPanel1.add(jtxtFieldTitulo);
-        jtxtFieldTitulo.setBounds(110, 70, 150, 30);
-        jPanel1.add(jtxtFieldEditora);
-        jtxtFieldEditora.setBounds(110, 120, 150, 30);
+        jtxtFieldTitulo.setBounds(110, 70, 410, 30);
+
+        jtxtFieldIsbn.setEnabled(false);
+        jPanel1.add(jtxtFieldIsbn);
+        jtxtFieldIsbn.setBounds(370, 140, 150, 30);
+
+        jComboBoxEditora.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "------------------------------", "Addison-Wesley", "John Wiley & Sons", "MIT Press", "O Reilly", "Oxford University Press", "Prentice Hall", "Random House", "Simon & Schuster", " " }));
+        jComboBoxEditora.setEnabled(false);
+        jPanel1.add(jComboBoxEditora);
+        jComboBoxEditora.setBounds(110, 140, 160, 30);
+
+        jtxtFieldPreco.setEnabled(false);
         jPanel1.add(jtxtFieldPreco);
-        jtxtFieldPreco.setBounds(370, 120, 150, 30);
-        jPanel1.add(jtxtFieldBusca);
-        jtxtFieldBusca.setBounds(170, 210, 200, 30);
+        jtxtFieldPreco.setBounds(370, 210, 150, 30);
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("POR ISBN");
+        jLabel6.setText("Autor");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(90, 210, 75, 30);
+        jLabel6.setBounds(30, 210, 75, 30);
 
-        jbtnBuscar.setText("Buscar");
-        jbtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+        jtxtAutor.setEnabled(false);
+        jPanel1.add(jtxtAutor);
+        jtxtAutor.setBounds(110, 210, 160, 30);
+
+        jButtonNovo.setText("Novo");
+        jButtonNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnBuscarActionPerformed(evt);
+                jButtonNovoActionPerformed(evt);
             }
         });
-        jPanel1.add(jbtnBuscar);
-        jbtnBuscar.setBounds(400, 210, 71, 32);
+        jPanel1.add(jButtonNovo);
+        jButtonNovo.setBounds(30, 260, 100, 35);
 
-        jTableLivros.setModel(new javax.swing.table.DefaultTableModel(
+        jButtonSalvar.setText("Salvar");
+        jButtonSalvar.setEnabled(false);
+        jPanel1.add(jButtonSalvar);
+        jButtonSalvar.setBounds(30, 310, 100, 35);
+
+        jButtonCancelar.setText("Cancelar");
+        jPanel1.add(jButtonCancelar);
+        jButtonCancelar.setBounds(30, 360, 100, 35);
+
+        jTableSalvo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -119,32 +142,27 @@ public class FormLivro extends javax.swing.JFrame {
 
             }
         ));
-        jTableLivros.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jTableLivros.setRowHeight(20);
-        jScrollPane1.setViewportView(jTableLivros);
+        jScrollPane2.setViewportView(jTableSalvo);
 
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(100, 270, 420, 170);
+        jPanel1.add(jScrollPane2);
+        jScrollPane2.setBounds(150, 260, 370, 180);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(20, 20, 560, 460);
 
-        setSize(new java.awt.Dimension(616, 539));
+        setSize(new java.awt.Dimension(616, 538));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarActionPerformed
-        if (jtxtFieldBusca.getText() == null || jtxtFieldBusca.getText().trim().equals("")) {
-            preencherTabela("SELECT * FROM books ORDER BY title");
-        } else {
-            mod.setConsulta(jtxtFieldBusca.getText());
-            BeansLivro model = control.buscaLivro(mod);
-            jtxtFieldTitulo.setText(model.getNome());
-            jtxtFieldIsbn.setText(model.getIsbn());
-            jtxtFieldEditora.setText(model.getEditora());
-            jtxtFieldPreco.setText(String.valueOf(model.getPreco()));
-        }
-    }//GEN-LAST:event_jbtnBuscarActionPerformed
+    private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
+        jtxtFieldTitulo.setEnabled(true);
+        jtxtFieldIsbn.setEnabled(true);
+        jtxtFieldPreco.setEnabled(true);
+        jComboBoxEditora.setEnabled(true);
+        jtxtAutor.setEnabled(true);
+        jButtonSalvar.setEnabled(true);
+        jButtonNovo.setEnabled(false);
+    }//GEN-LAST:event_jButtonNovoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,23 +212,29 @@ public class FormLivro extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(rootPane, "Erro ao preencher a tabela" + ex, "Erro", JOptionPane.ERROR);
         }
+        
+        //TABELA DE QUANDO CLICAR EM SALVAR
         ModeloTabela modelo = new ModeloTabela(dados, colunas);
-        jTableLivros.setModel(modelo);
-        jTableLivros.getColumnModel().getColumn(0).setPreferredWidth(130);
-        jTableLivros.getColumnModel().getColumn(0).setResizable(false);
-        jTableLivros.getColumnModel().getColumn(1).setPreferredWidth(40);
-        jTableLivros.getColumnModel().getColumn(1).setResizable(false);
-        jTableLivros.getColumnModel().getColumn(2).setPreferredWidth(10);
-        jTableLivros.getColumnModel().getColumn(2).setResizable(false);
-        jTableLivros.getColumnModel().getColumn(3).setPreferredWidth(10);
-        jTableLivros.getColumnModel().getColumn(3).setResizable(false);
-        jTableLivros.getTableHeader().setReorderingAllowed(false);
-        jTableLivros.setAutoResizeMode(jTableLivros.AUTO_RESIZE_ALL_COLUMNS);
-        jTableLivros.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        jTableSalvo.setModel(modelo);
+        jTableSalvo.getColumnModel().getColumn(0).setPreferredWidth(130);
+        jTableSalvo.getColumnModel().getColumn(0).setResizable(false);
+        jTableSalvo.getColumnModel().getColumn(1).setPreferredWidth(40);
+        jTableSalvo.getColumnModel().getColumn(1).setResizable(false);
+        jTableSalvo.getColumnModel().getColumn(2).setPreferredWidth(10);
+        jTableSalvo.getColumnModel().getColumn(2).setResizable(false);
+        jTableSalvo.getColumnModel().getColumn(3).setPreferredWidth(10);
+        jTableSalvo.getColumnModel().getColumn(3).setResizable(false);
+        jTableSalvo.getTableHeader().setReorderingAllowed(false);
+        jTableSalvo.setAutoResizeMode(jTableSalvo.AUTO_RESIZE_ALL_COLUMNS);
+        jTableSalvo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         conex.desconecta();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonNovo;
+    private javax.swing.JButton jButtonSalvar;
+    private javax.swing.JComboBox jComboBoxEditora;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -218,11 +242,9 @@ public class FormLivro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableLivros;
-    private javax.swing.JButton jbtnBuscar;
-    private javax.swing.JTextField jtxtFieldBusca;
-    private javax.swing.JTextField jtxtFieldEditora;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTableSalvo;
+    private javax.swing.JTextField jtxtAutor;
     private javax.swing.JTextField jtxtFieldIsbn;
     private javax.swing.JTextField jtxtFieldPreco;
     private javax.swing.JTextField jtxtFieldTitulo;
